@@ -1,0 +1,11 @@
+requests==2.32.3
+pandas==2.2.3
+certifi==2025.6.15
+
+# for password hashing + encryption + .env
+argon2-cffi==23.1.0
+cryptography==43.0.3
+python-dotenv==1.0.1
+
+# To reach .env files
+python-dotenv==1.0.1
