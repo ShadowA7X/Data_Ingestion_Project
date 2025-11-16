@@ -9,13 +9,6 @@ This file will create a CSV file using the https://randomuser.me/ API. Each time
 records will be added to the CSV (If it previously exist. If not, It will create a new one)
 
 
-------------------------
-add_records_to_csv.sh
-------------------------
-
-
-
-
 -------------------------
 Security measures
 -------------------------
