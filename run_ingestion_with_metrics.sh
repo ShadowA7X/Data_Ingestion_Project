@@ -30,7 +30,7 @@ BASE="$(cd -- "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 
 PY="$BASE/venv/bin/python" # path to python interpreter
-JOB="$BASE/API_Ingestion.py" # path to job script
+JOB_MODULE="ingestion.job" # Python module to run (package.module)
 LOG_DIR="$BASE/logs" # path to log directory
 LOG="$LOG_DIR/cron-$(date -u +%Y%m%d).log" # daily log file path
 LOCKDIR="$BASE/.run_lock" # path to lock directory
@@ -90,14 +90,19 @@ echo "==== RUN START ${START_TS_UTC} ===="
 echo "Run_id=$RUN_ID"
 echo "Pwd=$(pwd)"
 echo "Py=$("$PY" -V)"
-echo "Job=$(basename "$JOB")"
+echo "Job=$(basename "$JOB_MODULE")"
 echo "Host=$(hostname)"
 
 # ----------------------------------------------------------------------------------------
 # ----------------Execute the job script and capture its exit code------------------------
 # ----------------------------------------------------------------------------------------
 # run job
-"$PY" "$JOB" # execute the Python script (API_Ingestion.py) using the specified Python interpreter
+"$PY" -m "$JOB_MODULE" # execute the Python script (ingestion.py) using the specified Python interpreter
+# -m means: run thi Python module inside a package, not a standalone script file. This says:
+# 1) Find a package called ingestion
+# 2) Inside it, find a module called job
+# 3) Run that module as the main program
+
 rc=$? # capture the exit code of the Python script
 # ---------------------------------------------------------------------------------------- 
 # ---------------------------------------------------------------------------------------- 
