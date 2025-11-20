@@ -9,3 +9,7 @@ python-dotenv==1.0.1
 
 # To reach .env files
 python-dotenv==1.0.1
+
+# Web framework
+fastapi==0.121.2
+uvicorn==0.38.0
