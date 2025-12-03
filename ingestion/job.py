@@ -55,7 +55,7 @@ def run_ingestion_job() -> dict: # this will be a dict of metrics about the inge
     # The "resp" object sometimes contains deeper info. It has different nested attributes we can access in different levels.
     # It follows this pattern:
     # resp → raw → retries → total = resp.raw.retries.total
-    #  If if it doesn't have that info, we default to None to avoid errors.
+    # If it doesn't have that info, we default to None to avoid errors.
     
     # Part1: getattr(resp, "raw", None): This tries to get the "raw" attribute from the response object. If "raw" doesn't 
     # exist, it returns None.
